@@ -11,6 +11,8 @@ const HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
 @Injectable()
 export class ItemsService {
   constructor(private http: Http) {}
+  
+  itemMessage: string = 'Holla Ye The Items!!!!';
 
   loadItems() {
     return this.http.get(BASE_URL)
