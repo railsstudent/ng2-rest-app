@@ -9,6 +9,7 @@ import { Widget, widgets } from '../shared';
 export class WidgetsComponent {
   widgets: Array<Widget> = widgets;
 
+  selectedWidget: any = null;
+
   constructor() {}
 }
-
