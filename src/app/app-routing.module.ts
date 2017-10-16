@@ -5,12 +5,12 @@ import { FeaturedItemComponent } from './items/featured-item/featured-item.compo
 import { WidgetsComponent } from './widgets/widgets.component';
 
 const routes: Routes = [
-  {path: '',      redirectTo: '/items', pathMatch: 'full' },
+  {path: '',      redirectTo: '/widgets', pathMatch: 'full' },
   {path: 'items', component: ItemsComponent, children: [
     {path: 'featured/:id', component: FeaturedItemComponent}
   ]},
   {path: 'widgets', component: WidgetsComponent },
-  {path: '**',     redirectTo: '/items', pathMatch: 'full'}
+  {path: '**',     redirectTo: '/widgets', pathMatch: 'full'}
 ];
 
 @NgModule({
