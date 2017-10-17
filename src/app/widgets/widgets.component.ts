@@ -1,16 +1,23 @@
-import { Component } from '@angular/core';
-import { Widget, widgets } from '../shared';
+import { Component, OnInit } from '@angular/core';
+import { Widget, widgets, WidgetsService } from '../shared';
 
 @Component({
   selector: 'app-widgets',
   templateUrl: './widgets.component.html',
   styleUrls: ['./widgets.component.css']
 })
-export class WidgetsComponent {
-  widgets: Array<Widget> = widgets;
+export class WidgetsComponent implements OnInit {
+  widgets: Array<Widget>;
   selectedWidget: Widget;
+  girls: string[];
 
-  constructor() {}
+  constructor(private service: WidgetsService) {
+  }
+
+  ngOnInit() {
+    this.widgets = this.service.getWidgets();
+    this.girls = this.service.getPowerpuffGirls();
+  }
 
   resetWidget() {
     let emptyWidget: Widget = {id: null, name: '', description: ''};
@@ -28,4 +35,3 @@ export class WidgetsComponent {
   }
 
 }
-
