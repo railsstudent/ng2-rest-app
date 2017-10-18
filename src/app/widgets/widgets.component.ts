@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WidgetsService, Widget } from '../shared';
 import { Router, ActivatedRoute } from '@angular/router';
+import 'rxjs/add/operator/filter';
 
 @Component({
   selector: 'app-widgets',
@@ -19,6 +20,19 @@ export class WidgetsComponent implements OnInit {
 
   ngOnInit() {
     this.widgets = this.widgetsService.loadWidgets();
+    this.route.params
+      .filter(params => params.id)
+      .map(params => parseInt(params.id))
+      .subscribe(id =>
+          this.selectedWidget = this.widgets.find(w => w.id === id)
+      );
+
+    this.route.queryParams
+      .filter(params => params.name)
+      .map(params => params.name)
+      .subscribe(name =>
+          this.selectedWidget = this.widgets.find(w => w.name === name)
+      );
   }
 
   resetWidget() {
@@ -62,5 +76,12 @@ export class WidgetsComponent implements OnInit {
     // before resetting the current widget.
     this.resetWidget();
   }
-}
 
+  queryByName(name) {
+    this.router.navigate(['widgets'], { queryParams: { name: name }});
+  }
+
+  routeWidget(id) {
+    this.router.navigate(['widgets', id]);
+  }
+}

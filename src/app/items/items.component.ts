@@ -103,5 +103,8 @@ export class ItemsComponent implements OnInit {
     this.router.navigate(['featured', item.id], {relativeTo: this.route});
   }
 
-}
+  navigate() {
+    this.router.navigate(['widgets']);
+  }
 
+}

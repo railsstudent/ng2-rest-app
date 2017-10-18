@@ -10,6 +10,7 @@ const routes: Routes = [
     {path: 'featured/:id', component: FeaturedItemComponent}
   ]},
   {path: 'widgets', component: WidgetsComponent},
+  {path: 'widgets/:id', component: WidgetsComponent},
   {path: '**',     redirectTo: '/items', pathMatch: 'full'}
 ];
 

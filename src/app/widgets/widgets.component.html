@@ -30,4 +30,15 @@
     </div>
 
   </div>
+  <div *ngFor="let widget of widgets">
+    <button [routerLink]="['/widgets', widget.id]">RouterLink id {{widget.id}}</button><br />
+  </div>
+  <hr style="width: 100%;" />
+  <div *ngFor="let widget of widgets">
+    <button (click)="routeWidget(widget.id)">Programmatic navigate id {{widget.id}}</button><br />
+  </div>
+  <hr style="width: 100%;" />
+  <div *ngFor="let widget of widgets">
+    <button (click)="queryByName(widget.name)">Query {{widget.name}}</button><br />
+  </div>
 </div>
