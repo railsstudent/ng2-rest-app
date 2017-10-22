@@ -13,6 +13,7 @@ import { ItemDetailComponent } from './items/item-detail/item-detail.component';
 import { FeaturedItemComponent } from './items/featured-item/featured-item.component';
 import { WidgetsComponent } from './widgets/widgets.component';
 import { FeaturedWidgetComponent } from './widgets/featured-widget/featured-widget.component';
+import { ReviewComponent } from './items/review/review.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FeaturedWidgetComponent } from './widgets/featured-widget/featured-widg
     ItemDetailComponent,
     FeaturedItemComponent,
     WidgetsComponent,
-    FeaturedWidgetComponent
+    FeaturedWidgetComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,
