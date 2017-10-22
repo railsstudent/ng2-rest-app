@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
 import { ReviewsService, Review } from '../../shared';
 
 
@@ -12,7 +11,7 @@ export class ReviewComponent implements OnInit {
   reviewItems = [];
   title: string;
 
-  constructor(private route: ActivatedRoute, private reviewsService: ReviewsService)
+  constructor(private reviewsService: ReviewsService)
     {}
 
   ngOnInit() {

@@ -5,6 +5,7 @@ import { WidgetsComponent } from './widgets/widgets.component';
 import { FeaturedItemComponent } from './items/featured-item/featured-item.component';
 import { FeaturedWidgetComponent } from './widgets/featured-widget/featured-widget.component';
 import { ReviewComponent } from './items/review/review.component';
+import { ReviewItemComponent } from './items/review/review-item/review-item.component';
 
 const routes: Routes = [
   {path: '',      redirectTo: '/items', pathMatch: 'full' },
@@ -14,7 +15,9 @@ const routes: Routes = [
   {path: 'widgets', component: WidgetsComponent, children: [
     {path: 'featured/:id', component: FeaturedWidgetComponent}
   ]},
-  {path: 'reviews', component: ReviewComponent },
+  {path: 'reviews', component: ReviewComponent, children: [
+    {path: 'featured/:id', component: ReviewItemComponent}
+  ]},
   {path: '**',     redirectTo: '/items', pathMatch: 'full'}
 ];
 

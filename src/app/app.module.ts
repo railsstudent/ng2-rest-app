@@ -14,6 +14,7 @@ import { FeaturedItemComponent } from './items/featured-item/featured-item.compo
 import { WidgetsComponent } from './widgets/widgets.component';
 import { FeaturedWidgetComponent } from './widgets/featured-widget/featured-widget.component';
 import { ReviewComponent } from './items/review/review.component';
+import { ReviewItemComponent } from './items/review/review-item/review-item.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ReviewComponent } from './items/review/review.component';
     FeaturedItemComponent,
     WidgetsComponent,
     FeaturedWidgetComponent,
-    ReviewComponent
+    ReviewComponent,
+    ReviewItemComponent
   ],
   imports: [
     BrowserModule,
