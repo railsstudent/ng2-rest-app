@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { WidgetsService, Widget } from '../../shared/index';
+import { ReviewsService, Review } from '../../shared';
 
 
 @Component ({
@@ -12,16 +12,11 @@ export class ReviewComponent implements OnInit {
   reviewItems = [];
   title: string;
 
-  constructor(private route: ActivatedRoute)
+  constructor(private route: ActivatedRoute, private reviewsService: ReviewsService)
     {}
 
   ngOnInit() {
     this.title = "Review for me!!!";
-    this.reviewItems = [
-      'a',
-      'b',
-      'c',
-      'd'
-    ]
+    this.reviewItems = this.reviewsService.loadReviews();
   }
 }

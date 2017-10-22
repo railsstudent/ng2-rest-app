@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Ng2RestAppRoutingModule } from './app-routing.module';
 
-import { ItemsService, WidgetsService } from './shared';
+import { ItemsService, WidgetsService, ReviewsService } from './shared';
 
 import { AppComponent } from './app.component';
 import { ItemsComponent } from './items/items.component';
@@ -32,7 +32,7 @@ import { ReviewComponent } from './items/review/review.component';
     HttpModule,
     Ng2RestAppRoutingModule
   ],
-  providers: [ItemsService, WidgetsService],
+  providers: [ItemsService, WidgetsService, ReviewsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
