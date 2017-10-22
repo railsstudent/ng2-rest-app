@@ -1,6 +1,8 @@
 <h1>{{title}}</h1>
 <ul>
   <li *ngFor="let review of reviewItems">
-    {{review.id}} - {{review.title}}
+    <a href="#" [routerLink]="review.routerLink">{{review.id}} - {{review.title}}</a>
   </li>
 </ul>
+<hr />
+<router-outlet></router-outlet>

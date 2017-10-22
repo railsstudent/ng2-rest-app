@@ -6,4 +6,8 @@ export class ReviewsService {
   loadReviews() : Review[] {
     return reviews;
   }
+
+  getReview(id) : Review {
+    return reviews.find(review => review.id === +id);
+  }
 }
