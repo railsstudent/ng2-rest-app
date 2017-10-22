@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-
+import { Widget } from '../../shared';
 
 @Component({
   selector: 'app-widiget-details',
@@ -8,7 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class WidgetDetailsComponent implements OnInit {
 
-  
+  @Input()
+  selectedWidget: Widget;
+
   constructor() {
 
   }
