@@ -10,7 +10,9 @@
     </app-widgets-list>
   </div>
   <div class="mdl-cell mdl-cell--6-col">
-    <app-widget-detail [widget]="selectedWidget">
+    <app-widget-detail [widget]="selectedWidget"
+        (saved)="saveWidget($event)"
+        (cancelled)="resetWidget($event)">
       Select a Widget
     </app-widget-detail>
   </div>

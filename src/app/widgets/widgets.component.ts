@@ -44,6 +44,7 @@ export class WidgetsComponent implements OnInit {
   }
 
   selectWidget(widget: Widget) {
+    console.log('selectWidget', widget);
     this.selectedWidget = widget;
   }
 
@@ -89,4 +90,3 @@ export class WidgetsComponent implements OnInit {
   }
 
 }
-
