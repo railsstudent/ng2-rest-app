@@ -3,13 +3,16 @@
     <router-outlet></router-outlet>
   </div>
   <div class="mdl-cell mdl-cell--6-col">
-    <app-widget-list [widgets]="widgets" (selected)="selectWidget($event)"
-      (deleted)="deleteWidget($event)" (featured)="setWidgetAsFeatured($event)">
+    <app-widget-list [widgets]="widgets"
+      (selected)="selectWidget($event)"
+      (deleted)="deleteWidget($event)"
+      (featured)="setWidgetAsFeatured($event)">
     </app-widget-list>
   </div>
   <div class="mdl-cell mdl-cell--6-col">
     <app-widiget-details [selectedWidget]="selectedWidget"
-      (cancel)="resetWidget($event)" (save)="saveWidget($event)">
+      (cancel)="resetWidget($event)"
+      (save)="saveWidget($event)">
     </app-widiget-details>
   </div>
 </div>
