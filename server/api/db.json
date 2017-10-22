@@ -5,7 +5,7 @@
       "img": "number-1.png",
       "name": "Item 1",
       "description": "This is a description",
-      "featured": true
+      "featured": false
     },
     {
       "id": 2,
@@ -19,7 +19,7 @@
       "img": "number-3-icon.png",
       "name": "Item 3",
       "description": "This is a lovely item",
-      "featured": false
+      "featured": true
     }
   ]
 }

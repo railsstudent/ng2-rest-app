@@ -8,6 +8,8 @@
     </app-widget-list>
   </div>
   <div class="mdl-cell mdl-cell--6-col">
-    <app-widiget-details [selectedWidget]="selectedWidget"></app-widiget-details>
+    <app-widiget-details [selectedWidget]="selectedWidget"
+      (cancel)="resetWidget($event)" (save)="saveWidget($event)">
+    </app-widiget-details>
   </div>
 </div>

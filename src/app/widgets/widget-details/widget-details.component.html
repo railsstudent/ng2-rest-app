@@ -6,4 +6,10 @@
   <div class="mdl-card__supporting-text">
     <h6>{{selectedWidget?.description}}</h6>
   </div>
+  <div class="mdl-card__actions">
+    <button type="submit" (click)="cancel.emit(selectedWidget)"
+            class="mdl-button mdl-js-button mdl-js-ripple-effect">Cancel</button>
+    <button type="submit" [disabled]="!formRef.valid" (click)="save.emit(selectedWidget)"
+            class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect">Save</button>
+  </div>
 </div>
