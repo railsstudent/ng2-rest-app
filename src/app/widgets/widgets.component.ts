@@ -18,10 +18,17 @@ export class WidgetsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.widgets = this.widgetsService.loadWidgets();
-    if (this.route.snapshot.firstChild) {
-      this.diffFeaturedWidgets(this.widgets);
-    }
+    this.loadWidgets();
+  }
+
+  loadWidgets() {
+    this.widgetsService.loadWidgets()
+      .subscribe(widgets => {
+        this.widgets = widgets;
+        if (this.route.snapshot.firstChild) {
+          this.diffFeaturedWidgets(widgets);
+        }
+      });
   }
 
   // diffFeaturedWidgets handles the case where one widget is set as featured-item in the database,
@@ -48,17 +55,18 @@ export class WidgetsComponent implements OnInit {
   }
 
   saveWidget(widget: Widget) {
-    const responseWidget = this.widgetsService.saveWidget(widget);
-
-    if (widget.id) {
-      this.replaceWidget(responseWidget);
-    } else {
-      this.pushWidget(responseWidget);
-    }
-
-    // Generally, we would want to wait for the result of `widgetsService.saveWidget`
-    // before resetting the current widget.
-    this.resetWidget();
+    this.widgetsService.saveWidget(widget)
+      .subscribe(savedWidget => {
+        console.log(savedWidget);
+        if (widget.id) {
+          this.replaceWidget(savedWidget);
+        } else {
+          this.pushWidget(savedWidget);
+        }
+      });
+      // Generally, we would want to wait for the result of `widgetsService.saveWidget`
+      // before resetting the current widget.
+      this.resetWidget();
   }
 
   replaceWidget(widget: Widget) {
@@ -72,8 +80,8 @@ export class WidgetsComponent implements OnInit {
   }
 
   deleteWidget(widget: Widget) {
-    this.widgetsService.deleteWidget(widget);
-    this.widgets.splice(this.widgets.indexOf(widget), 1);
+    this.widgetsService.deleteWidget(widget)
+      .subscribe(() => this.widgets = this.widgets.filter(w => w.id !== widget.id));
 
     // Generally, we would want to wait for the result of `widgetsService.deleteWidget`
     // before resetting the current widget.
@@ -97,4 +105,3 @@ export class WidgetsComponent implements OnInit {
   }
 
 }
-

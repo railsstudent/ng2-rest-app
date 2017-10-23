@@ -1,18 +1,26 @@
+import { Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Widget, widgets } from './widget.model';
+import 'rxjs/add/operator/map';
+
+const BASE_URL = 'http://localhost:3000/widgets/'
+const IMG_URL = 'assets/img/'
+const HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
 
 @Injectable()
 export class WidgetsService {
-  widgets: Widget[] = widgets;
 
-  constructor() {}
+  constructor(private http: Http) {}
 
   loadWidgets() {
-    return [...this.widgets];
+    return this.http.get(BASE_URL)
+      .map(res => res.json());
   }
 
   loadWidget(id) {
-    return this.widgets.find(widget => widget.id === +id);
+    return this.http.get(`${BASE_URL}${id}`)
+      .map(res => res.json())
+      .map(widget => Object.assign({}, widget, {img: `${BASE_URL}${widget.img}`}));
   }
 
   saveWidget(widget: Widget) {
@@ -20,20 +28,20 @@ export class WidgetsService {
   }
 
   createWidget(widget: Widget) {
-    this.widgets = [...this.widgets, widget];
-    return widget;
+    return this.http.post(`${BASE_URL}`, JSON.stringify(widget), HEADER)
+      .map(res => res.json());
   }
 
   updateWidget(widget: Widget) {
-    this.widgets = this.widgets.map(w => {
-      return w.id === widget.id ? widget : w;
-    });
+    delete widget.img;
+    return this.http.patch(`${BASE_URL}${widget.id}`, JSON.stringify(widget), HEADER)
+      .map(res => res.json())
+      .map(widget => Object.assign({}, widget, {img: `${IMG_URL}${widget.img}`}));
 
-    return widget;
   }
 
   deleteWidget(widget: Widget) {
-    this.widgets = this.widgets.filter(w => w.id !== widget.id);
-    return widget;
+    return this.http.delete(`${BASE_URL}${widget.id}`)
+      .map(res => res.json());
   }
 }

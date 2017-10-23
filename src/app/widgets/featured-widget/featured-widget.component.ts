@@ -17,7 +17,8 @@ export class FeaturedWidgetComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.widget = this.widgetsService.loadWidget(params['id']);
+      this.widgetsService.loadWidget(params['id'])
+        .subscribe(widget => this.widget = widget);
     });
   }
 
